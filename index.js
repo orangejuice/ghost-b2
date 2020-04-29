@@ -70,7 +70,7 @@ class Store extends BaseStore {
         fileName: fileName,
         data: file,
       }).then((response) => {
-        return `${this.host}/file/${this.bucketName}/${response.data.fileName}`;
+        return `${this.host}/${response.data.fileName}`
       })
     })
   }
@@ -99,7 +99,7 @@ class Store extends BaseStore {
     }
 
     // otherwise, build up the absolute url
-    const filepath = options.path;
+    let filepath = options.path;
     if (!filepath.startsWith(this.pathPrefix)) {
       filepath = upath.join(this.pathPrefix, options.path);
     }
